@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        fieldset {
+            margin-bottom: 10px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+        }
+
+        textarea {
+            width: 90%;
+            height: 80px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Contact Us</h1>
+
+    <form>
+        <fieldset>
+            <legend>Your message:</legend>
+            <label>To:</label>
+            <input type="text" value="Example Cafe"><br><br>
+            <label>Your email:</label>
+            <input type="email" placeholder="you@example.com"><br><br>
+            <label>Message:</label><br>
+            <textarea></textarea><br>
+            <label>Attach File:</label>
+            <input type="file">
+        </fieldset>
+
+        <fieldset>
+            <legend>How you found us:</legend>
+            <label>How did you hear of us:</label>
+            <select>
+                <option>Google</option>
+                <option>Friend</option>
+                <option>Newspaper</option>
+            </select><br><br>
+            <label>Newsletter:</label>
+            <input type="checkbox" checked> Ensure this box is checked if you would like to receive email updates
+        </fieldset>
+
+        <input type="submit" value="Send message">
+    </form>
+
+</body>
+
+</html>

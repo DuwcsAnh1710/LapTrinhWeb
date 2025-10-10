@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            background-color: #add8e6;
+            font-family: Arial, sans-serif;
+            width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        hr {
+            margin: 15px 0;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 95%;
+            padding: 4px;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Registration Form</h1>
+    <p>Register your Jackson Electronics product here</p>
+
+    <form>
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="firstname"></td>
+                <td>Last Name:</td>
+                <td><input type="text" name="lastname"></td>
+            </tr>
+            <tr>
+                <td>Address #1:</td>
+                <td colspan="3"><input type="text" name="address1"></td>
+            </tr>
+            <tr>
+                <td>Address #2:</td>
+                <td colspan="3"><input type="text" name="address2"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" name="city"></td>
+                <td>State:</td>
+                <td><input type="text" name="state" size="5"></td>
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td colspan="3">
+                    <select>
+                        <option>United States</option>
+                        <option>Vietnam</option>
+                        <option>Japan</option>
+                        <option>Canada</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table>
+            <tr>
+                <td>Product:</td>
+                <td><select>
+                        <option>ScanMaster</option>
+                        <option>PhotoPro</option>
+                        <option>SoundWave</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Date Purchased:</td>
+                <td><input type="text" placeholder="MM/DD/YYYY"></td>
+            </tr>
+            <tr>
+                <td>Serial #:</td>
+                <td><input type="text" name="serial"></td>
+            </tr>
+        </table>
+
+        <p>Used for:</p>
+        <input type="radio" name="use" value="home"> Home
+        <input type="radio" name="use" value="business"> Business
+        <input type="radio" name="use" value="government"> Government
+        <input type="radio" name="use" value="education"> Educational Institution
+        <input type="radio" name="use" value="other"> Other
+
+        <p>System (check all that apply):</p>
+        <input type="checkbox" name="sys" value="Windows"> Windows
+        <input type="checkbox" name="sys" value="Macintosh"> Macintosh
+        <input type="checkbox" name="sys" value="UNIX"> UNIX
+        <input type="checkbox" name="sys" value="Other"> Other
+
+        <hr>
+
+        <p>Comments?</p>
+        <textarea rows="4" cols="50"></textarea>
+
+        <div class="buttons">
+            <input type="submit" value="Click to register">
+            <input type="reset" value="Click to cancel">
+        </div>
+    </form>
+
+</body>
+
+</html>
