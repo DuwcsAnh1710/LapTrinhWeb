@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio - Lê Đức Anh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      color: #2e2e2e;
+    }
+
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1100px;
+      margin: 60px auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+
+    .info {
+      flex: 1;
+      padding: 60px;
+      animation: fadeInLeft 1s ease;
+    }
+
+    .info h1 {
+      font-size: 42px;
+      color: #1b5e20;
+      margin-bottom: 10px;
+    }
+
+    .info h2 {
+      font-size: 22px;
+      color: #388e3c;
+      font-weight: 500;
+      margin-top: 0;
+    }
+
+    .info p {
+      font-size: 16px;
+      margin-top: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .info a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #43a047;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .info a:hover {
+      background-color: #2e7d32;
+      box-shadow: 0 4px 15px rgba(67, 160, 71, 0.4);
+    }
+
+
+    .photo {
+      flex: 1;
+      overflow: hidden;
+      text-align: center;
+      background: linear-gradient(135deg, #e0f2f1, #ffffff);
+      animation: fadeInRight 1s ease;
+    }
+
+    .photo img {
+      width: 80%;
+      border-radius: 20px;
+      margin: 40px 0;
+      transition: transform 0.4s ease;
+    }
+
+    .photo img:hover {
+      transform: scale(1.05);
+    }
+
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="info">
+      <h1>Xin chào, Tôi là <span style="color:#2e7d32;">Lê Đức Anh</span></h1>
+      <h2>Sinh viên Công nghệ Thông tin</h2>
+      <p>
+        Tôi hiện đang theo học chuyên ngành <b>Công nghệ Thông tin</b> 
+        với niềm đam mê về <b>lập trình, thiết kế web và công nghệ mới</b>.  
+        Trong học phần <b>Lập trình Web</b>, tôi đang rèn luyện kỹ năng xây dựng 
+        giao diện, thiết kế website hiện đại và viết mã HTML, CSS một cách chuyên nghiệp.  
+        Mục tiêu của tôi là trở thành một <b>lập trình viên front-end</b> sáng tạo, 
+        có khả năng tạo ra những trải nghiệm người dùng thân thiện và đẹp mắt.
+      </p>
+      <a href="#">📄 Xem hồ sơ học tập của tôi</a>
+    </div>
+
+
+    <div class="photo">
+      <img src="images/profile.png" alt="Ảnh cá nhân - Lê Đức Anh">
+    </div>
+  </div>
+
+  <footer>
+    © 2025 | Thiết kế bởi <b>Lê Đức Anh</b> • Môn Lập trình Web
+  </footer>
+
+</body>
+</html>
