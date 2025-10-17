@@ -1,60 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Sunny Acres</title>
-    <link rel="stylesheet" href="farm.css">
-    <style>
-        body {
-            background: #000 url('images/background.jpg') repeat;
-            margin: 0;
-            padding: 20px;
-            color: #00ff00;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            text-align: center;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .logo {
-            margin-bottom: 20px;
-        }
-        .welcome {
-            color: #00ff00;
-            font-size: 36px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 30px;
-        }
-        .address {
-            color: #00ff00;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        .enter-link img {
-            max-width: 400px;
-            border: 2px solid #fff;
-        }
-    </style>
-</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sunny Acres - Index</title>
+  <link rel="stylesheet" href="farm.css">
+  <style>
+    /* Page-specific tweaks */
+    body { background-image: url('assets/background.jpg'); }
+    .center { text-align: center; }
+    .logo { max-width: 340px; width: 80%; height: auto; }
+  </style>
+  <meta name="description" content="Sunny Acres landing page">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/Salogo.gif">
+  <link rel="preload" as="image" href="assets/xe.jpg">
+  <link rel="preload" as="image" href="assets/banner-sunny.jpg">
+  <link rel="preload" as="image" href="assets/background.jpg">
+  <link rel="preload" as="image" href="assets/hero-car.jpg">
+  <style>
+    .title {
+      font-size: 64px;
+      line-height: 1.1;
+      letter-spacing: 4px;
+      margin-top: 12px;
+      text-shadow: 0 6px 14px rgba(0,0,0,0.65);
+    }
+  </style>
+  </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="images/salogo.jpg" alt="Sunny Acres Logo">
-        </div>
-        <h1 class="welcome">Welcome to Sunny Acres</h1>
-        <div class="address">
-            Tammy and Brent Nielsen<br>
-            1973 Hwy G<br>
-            Council Bluffs, IA 51503
-        </div>
-        <a href="home.html" class="enter-link">
-            <img src="images/siggie.jpg" alt="Enter Sunny Acres">
-        </a>
+  <div class="page center">
+    <div class="topbar center">
+      <div class="brand center" style="margin:0 auto;">
+        <img src="assets/banner-sunny.jpg" alt="Sunny Acres logo" class="logo">
+      </div>
     </div>
-    <div class="promo">
-        <img src="images/promo.jpg" alt="Promotional photo">
-    </div>
+
+    <img src="assets/xe.jpg" alt="Alternator Double Dealer" class="hero" loading="eager">
+    <h1 class="title">Alternator Double Dealer</h1>
+
+    <p>Nhấn vào hình dưới để đến trang chủ.</p>
+    <a href="home.html" title="Vào trang chủ Sunny Acres">
+      <img src="assets/xe.jpg" alt="Vào trang chủ" style="max-width:520px;width:90%;height:auto;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.6)">
+    </a>
+  </div>
 </body>
 </html>
+
+
