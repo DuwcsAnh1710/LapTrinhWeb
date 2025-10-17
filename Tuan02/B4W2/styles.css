@@ -1,0 +1,79 @@
+/* Scrapbooks theme - Bai4 */
+
+:root{
+  --bg: #f7f2e9;
+  --paper: #fffaf1;
+  --accent: #e7ad3c;
+  --accent-dark:#d18d12;
+  --text: #433b2f;
+  --muted:#7a6d59;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color:var(--text);
+  background: var(--bg) url("assets/paper-texture.jpg") center/cover fixed no-repeat;
+}
+
+.page{
+  max-width: 1100px;
+  margin: 24px auto;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  border: 1px solid #eadfcb;
+}
+
+.header{
+  position: relative;
+  padding: 28px 28px 16px 28px;
+  border-bottom: 4px solid var(--accent);
+  background: linear-gradient(180deg,#ffffff, #fff6e3);
+}
+.brand{
+  display:flex; gap:16px; align-items:center; justify-content:flex-start;
+}
+.brand img{ height:58px; width:auto; }
+.brand h1{ margin:0; letter-spacing:6px; font-weight:700; }
+.badge{ position:absolute; right:28px; top:22px; color:#fff; background:var(--accent-dark); padding:4px 10px; border-radius:12px; font-size:12px; }
+
+.layout{ display:grid; grid-template-columns: 220px 1fr; gap:24px; padding: 22px; }
+
+.sidebar{
+  background: #fff7e6 url("assets/sidebar-texture.jpg") repeat;
+  border: 1px solid #edd8af;
+}
+.menu{ list-style:none; margin:0; padding:10px; }
+.menu li{ margin:6px 0; }
+.menu a{
+  display:block; padding:10px 12px; border:1px solid #e7cf9c; background:#fff; color:var(--text); text-decoration:none; border-radius:6px;
+}
+.menu a:hover{ border-color: var(--accent); box-shadow: 0 0 0 2px rgba(231,173,60,.2) inset; }
+
+.content{
+  background: var(--paper);
+  border:1px solid #ecdcc2;
+  padding: 18px 22px 28px;
+}
+.content h2{ color:#d78f1b; margin: 10px 0 12px; }
+.content h3{ color:#c37b08; margin: 18px 0 8px; }
+.columns{ display:grid; grid-template-columns: 1fr 320px; gap:18px; }
+.note{ background:#fff; border:1px solid #ebd7b1; padding:12px; box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+
+.footer{ padding: 10px 18px 16px; text-align:center; color:var(--muted); border-top:1px dashed #eadfcb; background:#fffaf1; }
+
+.hero{ width:100%; height:auto; display:block; border:1px solid #e9d6b2; box-shadow:0 4px 18px rgba(0,0,0,.08); }
+
+.callout{ position:absolute; background:#fff; border:1px solid #e7cf9c; padding:10px; width:180px; box-shadow:0 8px 20px rgba(0,0,0,.08); }
+.callout.left{ left:24px; top:65%; transform:translateY(-50%); }
+.callout.right{ right:24px; top:70%; transform:translateY(-50%); }
+
+@media (max-width: 900px){
+  .layout{ grid-template-columns: 1fr; }
+  .columns{ grid-template-columns: 1fr; }
+  .callout{ position:static; transform:none; margin:10px 0; }
+}
+
+
