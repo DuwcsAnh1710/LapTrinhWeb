@@ -1,0 +1,119 @@
+/* Sunny Acres site styles */
+*{box-sizing:border-box}
+body{
+  background:#000 url('images/background.jpg') repeat;
+  margin:0;padding:0;font-family:Georgia, 'Times New Roman', serif;color:#fff;
+}
+
+/* Header area */
+.header{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:#ffffff00}
+.header img{height:70px}
+.header .address{color:#2b2b2b;font-size:14px;text-align:right}
+
+/* Main layout */
+#links{float:left;width:180px;background:#fff;color:#333;padding:12px;margin:18px 12px 0 12px;box-shadow:4px 4px 8px rgba(0,0,0,0.4)}
+#links a{display:block;color:#6b0a3a;text-decoration:none;padding:8px 6px}
+#links a:hover{background:#f4f4f4}
+
+#noidung{margin-left:220px;margin-right:260px;padding:20px 24px;color:#fff}
+
+/* Promotional right column (fixed) */
+.promo{position:fixed;right:20px;top:140px;width:220px}
+.promo img{width:220px;border:6px solid #fff}
+
+/* Green title bars */
+h2{display:block;width:100%;background:#1f7a20;color:#fff;padding:8px 12px;font-size:20px;letter-spacing:8px;text-align:center;margin:8px 0 14px}
+
+h3{color:#d75a6a;margin:6px 0 12px 0;font-family:Arial,Helvetica,sans-serif}
+
+/* Content styling */
+#noidung p{color:#fff;line-height:1.6}
+#noidung ul{margin-left:20px;color:#fff}
+#noidung li{margin:6px 0}
+
+/* Footer */
+address{display:block;text-align:center;border-top:6px solid #1f7a20;padding:12px 0 30px 0;clear:both;background:#000000aa;color:#fff}
+
+/* Responsive */
+@media(max-width:900px){
+  .promo{position:static;width:auto;margin:12px}
+  #noidung{margin-right:0}
+  #links{position:static;width:auto;margin:12px}
+}
+/* Common styles for all pages */
+body {
+    background: #000 url('images/background.jpg') repeat;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+/* Layout containers */
+#links {
+    float: left;
+    width: 200px;
+    background-color: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#noidung {
+    margin-left: 220px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Header styles */
+h2 {
+    width: 100%;
+    padding-left: 15px;
+    font-size: 24px;
+    font-style: italic;
+    letter-spacing: 3px;
+    text-indent: 15px;
+    background-color: #008000;
+    color: #fff;
+}
+
+h3 {
+    width: 100%;
+    padding-left: 15px;
+    background-color: #008000;
+}
+
+/* Navigation links */
+a:link {
+    color: #ff69b4;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #dda0dd;
+}
+
+a:active {
+    color: #ff0000;
+}
+
+a:hover {
+    color: #00ff00;
+    text-decoration: underline;
+}
+
+/* Footer address */
+address {
+    text-align: center;
+    border-top: 1px solid #666;
+    padding-top: 10px;
+    clear: both;
+}
+
+/* Navigation menu */
+#links {
+    float: left;
+    width: 180px;
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid #333;
+}
