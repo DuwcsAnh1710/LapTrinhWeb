@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bai 2 - Tuong tac tren form</title>
+  </head>
+  <body>
+    <main class="page">
+      <header class="page__header">
+        <h1>Bai 2. Tuong tac tren Form</h1>
+        <p>
+          Thuc hanh cac bai tap ve form: dang ky, dang nhap, phep tinh co ban, chon
+          loai cafe va form dinh dang.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2 class="section__title">a) Form dang ky va dang nhap</h2>
+        <div class="two-column">
+          <form id="registerForm" class="card card--thin">
+            <h3 class="card__heading">THONG TIN DANG KY</h3>
+            <label class="input-row">
+              <span>Ho ten</span>
+              <input type="text" name="fullName" placeholder="Ho ten" required />
+            </label>
+            <label class="input-row">
+              <span>Mat khau</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Nhap mat khau"
+                required
+              />
+            </label>
+            <button type="submit" class="button button--primary">Dang ky</button>
+            <p class="form-message" data-output="register"></p>
+          </form>
+
+          <form id="loginForm" class="card card--thin">
+            <h3 class="card__heading">THONG TIN DANG NHAP</h3>
+            <label class="input-row">
+              <span>UserName</span>
+              <input type="text" name="username" placeholder="YourName" required />
+            </label>
+            <label class="input-row">
+              <span>PassWord</span>
+              <input
+                type="password"
+                name="userPassword"
+                placeholder="YourPWD"
+                required
+              />
+            </label>
+            <button type="submit" class="button button--primary">Dang nhap</button>
+            <p class="form-message" data-output="login"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">b) Phep tinh co ban</h2>
+        <form id="mathForm" class="card card--wide">
+          <h3 class="card__heading">PHEP TINH CO BAN</h3>
+          <div class="form-grid">
+            <label>
+              <span>Nhap so thu 1 <strong>(*)</strong></span>
+              <input type="text" name="numberA" />
+            </label>
+            <label>
+              <span>Nhap so thu 2 <strong>(*)</strong></span>
+              <input type="text" name="numberB" />
+            </label>
+          </div>
+          <div class="button-row">
+            <button type="button" data-operator="add" class="button">Cong</button>
+            <button type="button" data-operator="subtract" class="button">Tru</button>
+            <button type="button" data-operator="multiply" class="button">Nhan</button>
+            <button type="button" data-operator="divide" class="button">Chia</button>
+            <button type="button" data-operator="mod" class="button">Chia du</button>
+          </div>
+          <label class="result-row">
+            <span>Ket qua</span>
+            <input type="text" name="result" readonly />
+          </label>
+          <p class="form-message" data-output="math"></p>
+        </form>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">c) Chon loai cafe</h2>
+        <form id="coffeeForm" class="card card--wide">
+          <h3 class="card__heading">Chon loai cafe</h3>
+          <fieldset>
+            <legend>Lua chon cua ban</legend>
+            <label class="checkbox-row">
+              <input type="checkbox" name="coffee" value="Trung Nguyen" />
+              <span>Trung Nguyen</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="coffee" value="Me Kong" />
+              <span>Me Kong</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="coffee" value="New Life" checked />
+              <span>New Life</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="coffee" value="Ocean Blue" checked />
+              <span>Ocean Blue</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="coffee" value="Blue Space" />
+              <span>Blue Space</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="coffee" value="Windows" />
+              <span>Windows</span>
+            </label>
+          </fieldset>
+          <p class="form-message" data-output="coffee"></p>
+        </form>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">d) Form dinh dang</h2>
+        <form id="formatForm" class="card card--wide">
+          <h3 class="card__heading">FORM DINH DANG</h3>
+          <label class="input-row">
+            <span>Ho va ten</span>
+            <input type="text" name="ownerName" placeholder="Nhap ho ten" required />
+          </label>
+          <div class="radio-row">
+            <span>Chon</span>
+            <label><input type="radio" name="applyType" value="background" checked /> Background</label>
+            <label><input type="radio" name="applyType" value="color" /> Font</label>
+          </div>
+          <label class="input-row">
+            <span>Chon mau</span>
+            <select name="colorChoice">
+              <option value="">Chon mau ...</option>
+              <option value="#f97316">Cam</option>
+              <option value="#dc2626">Do</option>
+              <option value="#0ea5e9">Xanh bien</option>
+              <option value="#14b8a6">Xanh ngoc</option>
+              <option value="#7c3aed">Tim</option>
+              <option value="#111827">Den</option>
+            </select>
+          </label>
+          <div class="button-row">
+            <button type="button" id="applyFormat" class="button button--primary">
+              Doi mau
+            </button>
+            <button type="button" id="resetFormat" class="button">Cancel</button>
+          </div>
+          <div class="format-preview" id="formatPreview" contenteditable="true">
+            you can direct link the hyperlink with the file if you know the address
+            but this is limited by the browser. eg. if pdf reader is installed on
+            the client then the pdf will not be downloaded instead it will be
+            shown. A good solution would be to have a separe page for downloading
+            files. just pass filename in querystring and in the pageload event just
+            output the file in response stream.This way you can use url say
+            dwnld.aspx?filename.ext
+          </div>
+          <p class="form-message" data-output="format"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="./main.js" defer></script>
+  </body>
+</html>
