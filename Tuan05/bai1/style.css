@@ -1,0 +1,127 @@
+:root {
+  color-scheme: light;
+  --accent: #c22174;
+  --accent-soft: #f9dff0;
+  --border: #c7cad1;
+  --shadow: 0 8px 24px rgba(32, 41, 57, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: linear-gradient(135deg, #f1f5ff, #e6eefb);
+  color: #1f2933;
+}
+
+.layout {
+  width: min(880px, 96vw);
+  display: grid;
+  gap: 24px;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  box-shadow: var(--shadow);
+}
+
+.panel__title {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #334155;
+}
+
+.panel__hint {
+  margin: 0 0 18px;
+  line-height: 1.6;
+  color: #53607a;
+}
+
+.panel__action {
+  align-self: start;
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.panel__action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+}
+
+.panel__action:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.table-wrapper {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 24px 28px 28px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 16px;
+  background: #ffffff;
+}
+
+.student-table th,
+.student-table td {
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+}
+
+.student-table th {
+  background: #e9edf6;
+  font-weight: 600;
+  color: #344256;
+}
+
+.student-table__title {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+}
+
+.student-table td {
+  font-size: 15px;
+}
+
+.student-table td[data-field="name"] {
+  text-align: left;
+}
+
+.table-note {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: #5b6578;
+  text-align: center;
+}

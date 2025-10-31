@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bai 1 - Ham prompt</title>
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel">
+        <h1 class="panel__title">Ham prompt - Nhap thong tin sinh vien</h1>
+        <p class="panel__hint">
+          Nhan nut ben duoi va nhap ma so, ho ten, lop cua sinh vien theo yeu cau cua
+          hop thoai hien ra.
+        </p>
+        <button id="btnPrompt" type="button" class="panel__action">
+          Nhap thong tin sinh vien
+        </button>
+      </section>
+
+      <section class="table-wrapper">
+        <table class="student-table" aria-live="polite">
+          <thead>
+            <tr>
+              <th class="student-table__title" colspan="3">DANH SACH SINH VIEN</th>
+            </tr>
+            <tr>
+              <th scope="col">MSSV</th>
+              <th scope="col">Ho ten</th>
+              <th scope="col">Lop</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-field="id">---</td>
+              <td data-field="name">---</td>
+              <td data-field="class">---</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-note">
+          (Du lieu se duoc dien sau khi ban hoan thanh hop thoai prompt.)
+        </p>
+      </section>
+    </main>
+
+    <script defer src="./main.js"></script>
+  </body>
+</html>
