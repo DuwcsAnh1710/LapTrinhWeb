@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Form</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #d8edd7;
+        color: #1f3b4d;
+      }
+
+      .form-wrapper {
+        max-width: 620px;
+        margin: 0 auto;
+        background: #f0fff0;
+        border: 2px solid #7ecf73;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .form-wrapper h1 {
+        margin: 0;
+        background: #78c878;
+        color: #ffffff;
+        padding: 16px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 10px 12px;
+        border: 1px solid #9bdc91;
+        font-size: 14px;
+      }
+
+      td:first-child {
+        width: 35%;
+        font-weight: 600;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      select {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #88c78a;
+        border-radius: 4px;
+        font-size: 14px;
+        background: #ffffff;
+        box-sizing: border-box;
+      }
+
+      input[type="text"]:focus,
+      input[type="password"]:focus,
+      select:focus {
+        outline: 2px solid #58a865;
+      }
+
+      .inline-selects {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .inline-selects select {
+        width: auto;
+        min-width: 70px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        padding-top: 12px;
+      }
+
+      button {
+        padding: 10px 22px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        transition: transform 0.1s ease, opacity 0.15s ease;
+      }
+
+      button[type="submit"] {
+        background: #36853d;
+        color: #ffffff;
+      }
+
+      button[type="reset"] {
+        background: #f5f7f2;
+        border: 1px solid #b2cbb1;
+        color: #3a5238;
+      }
+
+      button:hover {
+        opacity: 0.85;
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      .note {
+        font-size: 13px;
+        color: #466d45;
+        padding: 0 12px 10px;
+      }
+
+      .error-message {
+        min-height: 20px;
+        padding: 10px 12px 0;
+        font-size: 14px;
+        color: #c0392b;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <h1>Register Form</h1>
+      <form id="registerForm" novalidate>
+        <table>
+          <tbody>
+            <tr>
+              <td>Họ và tên (*):</td>
+              <td><input type="text" id="fullName" /></td>
+            </tr>
+            <tr>
+              <td>Tên đăng nhập (*):</td>
+              <td><input type="text" id="username" /></td>
+            </tr>
+            <tr>
+              <td>Mật khẩu (*):</td>
+              <td><input type="password" id="password" /></td>
+            </tr>
+            <tr>
+              <td>Xác nhận mật khẩu (*):</td>
+              <td><input type="password" id="confirmPassword" /></td>
+            </tr>
+            <tr>
+              <td>Ngày sinh:</td>
+              <td>
+                <div class="inline-selects">
+                  <select id="day">
+                    <option value="">Ngày</option>
+                  </select>
+                  <span>Tháng:</span>
+                  <select id="month">
+                    <option value="">Tháng</option>
+                  </select>
+                  <span>Năm:</span>
+                  <select id="year">
+                    <option value="">Năm</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Điện thoại:</td>
+              <td><input type="text" id="phone" /></td>
+            </tr>
+            <tr>
+              <td>Địa chỉ:</td>
+              <td><input type="text" id="address" /></td>
+            </tr>
+            <tr>
+              <td>Email khác (*):</td>
+              <td><input type="text" id="email" /></td>
+            </tr>
+            <tr>
+              <td>Sở thích:</td>
+              <td>
+                <select id="hobby">
+                  <option value="Ca Nhạc">Ca Nhạc</option>
+                  <option value="Thể Thao">Thể Thao</option>
+                  <option value="Du Lịch">Du Lịch</option>
+                  <option value="Đọc Sách">Đọc Sách</option>
+                  <option value="Nấu Ăn">Nấu Ăn</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note">Các trường có dấu (*) là bắt buộc nhập.</div>
+        <div id="errorMessage" class="error-message"></div>
+        <div class="actions">
+          <button type="submit">Đăng ký</button>
+          <button type="reset">Hủy</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const form = document.getElementById("registerForm");
+      const fullName = document.getElementById("fullName");
+      const username = document.getElementById("username");
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("confirmPassword");
+      const phone = document.getElementById("phone");
+      const address = document.getElementById("address");
+      const email = document.getElementById("email");
+      const hobby = document.getElementById("hobby");
+      const daySelect = document.getElementById("day");
+      const monthSelect = document.getElementById("month");
+      const yearSelect = document.getElementById("year");
+      const errorMessage = document.getElementById("errorMessage");
+
+      // Populate day, month, year selects
+      const populateSelect = (select, start, end) => {
+        for (let value = start; value <= end; value += 1) {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = value;
+          select.appendChild(option);
+        }
+      };
+
+      populateSelect(daySelect, 1, 31);
+      populateSelect(monthSelect, 1, 12);
+      populateSelect(yearSelect, 1940, new Date().getFullYear());
+
+      const showError = (element, message) => {
+        errorMessage.textContent = message;
+        element.focus();
+      };
+
+      const emailRegex =
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        errorMessage.textContent = "";
+
+        if (!fullName.value.trim()) {
+          showError(fullName, "Vui lòng nhập họ và tên.");
+          return;
+        }
+
+        if (username.value.trim().length < 6) {
+          showError(username, "Tên đăng nhập phải có ít nhất 6 ký tự.");
+          return;
+        }
+
+        if (!password.value) {
+          showError(password, "Vui lòng nhập mật khẩu.");
+          return;
+        }
+
+        if (confirmPassword.value !== password.value) {
+          showError(
+            confirmPassword,
+            "Xác nhận mật khẩu không khớp với mật khẩu."
+          );
+          return;
+        }
+
+        if (phone.value.trim() && Number.isNaN(Number(phone.value.trim()))) {
+          showError(phone, "Điện thoại chỉ gồm các chữ số.");
+          return;
+        }
+
+        if (!email.value.trim()) {
+          showError(email, "Vui lòng nhập email.");
+          return;
+        }
+
+        if (!emailRegex.test(email.value.trim())) {
+          showError(email, "Email không đúng định dạng.");
+          return;
+        }
+
+        const formData = {
+          fullName: fullName.value.trim(),
+          username: username.value.trim(),
+          password: password.value,
+          day: daySelect.value,
+          month: monthSelect.value,
+          year: yearSelect.value,
+          phone: phone.value.trim(),
+          address: address.value.trim(),
+          email: email.value.trim(),
+          hobby: hobby.value,
+        };
+
+        localStorage.setItem("registerData", JSON.stringify(formData));
+        window.location.href = "thongtin.html";
+      });
+    </script>
+  </body>
+</html>
+
