@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông tin đăng ký</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #edf7ed;
+        color: #1d3d45;
+      }
+
+      .container {
+        max-width: 640px;
+        margin: 0 auto;
+        background: #ffffff;
+        border: 2px solid #93d090;
+        border-radius: 6px;
+        box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+
+      h1 {
+        margin: 0;
+        padding: 18px;
+        text-align: center;
+        background: #7ac878;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #c5e6c4;
+        font-size: 15px;
+      }
+
+      td:first-child {
+        width: 35%;
+        font-weight: 600;
+        color: #2e5b47;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        padding: 18px;
+      }
+
+      .actions a {
+        padding: 10px 18px;
+        text-decoration: none;
+        background: #36853d;
+        color: #ffffff;
+        font-weight: 600;
+        border-radius: 4px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: opacity 0.15s ease;
+      }
+
+      .actions a:hover {
+        opacity: 0.85;
+      }
+
+      .empty-state {
+        padding: 24px;
+        text-align: center;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="infoContainer">
+      <h1>Thông tin đăng ký</h1>
+      <div id="content"></div>
+    </div>
+
+    <script>
+      const content = document.getElementById("content");
+      const data = localStorage.getItem("registerData");
+
+      if (!data) {
+        content.innerHTML = `
+          <div class="empty-state">
+            Không tìm thấy dữ liệu đăng ký. Vui lòng quay lại trang <a href="index.html">đăng ký</a>.
+          </div>`;
+      } else {
+        const {
+          fullName,
+          username,
+          password,
+          day,
+          month,
+          year,
+          phone,
+          address,
+          email,
+          hobby,
+        } = JSON.parse(data);
+
+        const birthday =
+          day && month && year ? `${day}/${month}/${year}` : "Chưa cung cấp";
+
+        const rows = [
+          ["Họ và tên", fullName],
+          ["Tên đăng nhập", username],
+          ["Mật khẩu", password.replace(/./g, "•")],
+          ["Ngày sinh", birthday],
+          ["Điện thoại", phone || "Chưa cung cấp"],
+          ["Địa chỉ", address || "Chưa cung cấp"],
+          ["Email", email],
+          ["Sở thích", hobby],
+        ];
+
+        const table = document.createElement("table");
+
+        rows.forEach(([label, value]) => {
+          const row = document.createElement("tr");
+          const labelCell = document.createElement("td");
+          labelCell.textContent = label;
+          const valueCell = document.createElement("td");
+          valueCell.textContent = value;
+          row.append(labelCell, valueCell);
+          table.appendChild(row);
+        });
+
+        content.appendChild(table);
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+        actions.innerHTML =
+          '<a href="index.html" id="backLink">Quay lại</a>';
+        content.appendChild(actions);
+      }
+    </script>
+  </body>
+</html>
+
