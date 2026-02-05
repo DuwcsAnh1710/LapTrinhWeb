@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuan 8 - Bai 3</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 32px;
+        background: #f4f7fb;
+        color: #1f2c3a;
+      }
+
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 16px 32px rgba(15, 40, 80, 0.08);
+        padding: 28px;
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #0d47a1;
+      }
+
+      form {
+        display: grid;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+
+      .field label {
+        font-weight: 600;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 6px;
+        border: 1px solid #c6d3e2;
+        font-size: 14px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #1e88e5;
+        box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .radio-group label {
+        font-weight: 500;
+      }
+
+      button {
+        width: 160px;
+        padding: 12px;
+        border-radius: 6px;
+        border: none;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        background: #1e88e5;
+        color: #ffffff;
+        cursor: pointer;
+        transition: opacity 0.2s ease, transform 0.1s ease;
+      }
+
+      button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      button:not(:disabled):hover {
+        opacity: 0.85;
+      }
+
+      button:not(:disabled):active {
+        transform: translateY(1px);
+      }
+
+      .error {
+        font-size: 13px;
+        color: #c62828;
+        min-height: 16px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+      }
+
+      th,
+      td {
+        border: 1px solid #d5deeb;
+        padding: 12px 16px;
+        text-align: left;
+        font-size: 14px;
+      }
+
+      th {
+        background: #eaf1fb;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #20436d;
+      }
+
+      tbody tr:nth-child(odd) {
+        background: #f8fbff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dang ky mon hoc</h1>
+      <form id="registerForm" novalidate>
+        <div class="field">
+          <label for="fullName">Ho ten</label>
+          <input
+            type="text"
+            id="fullName"
+            placeholder="Ví dụ: Nguyen Van A"
+            autocomplete="off"
+          />
+          <div class="error" id="nameError"></div>
+        </div>
+
+        <div class="field">
+          <label for="classSelect">Lop</label>
+          <select id="classSelect">
+            <option value="">-- Chon lop --</option>
+            <option>Dai hoc Ky thuat phan mem 9A</option>
+            <option>Dai hoc Ky thuat phan mem 9B</option>
+            <option>Dai hoc Cong nghe thong tin 10A</option>
+            <option>Cao dang Lap trinh 12A</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="subjectSelect">Mon hoc</label>
+          <select id="subjectSelect">
+            <option value="">-- Chon mon --</option>
+            <option>Lap trinh huong doi tuong</option>
+            <option>Cau truc du lieu va giai thuat</option>
+            <option>Co so du lieu</option>
+            <option>Lap trinh web</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Loai</label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="courseType" value="Ly thuyet" checked />
+              Ly thuyet
+            </label>
+            <label>
+              <input type="radio" name="courseType" value="Thuc hanh" />
+              Thuc hanh
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn" disabled>Dang ky</button>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Ho ten</th>
+            <th>Lop</th>
+            <th>Mon hoc dang ky</th>
+            <th>Loai</th>
+          </tr>
+        </thead>
+        <tbody id="registerTableBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      $(function () {
+        const nameRegex =
+          /^([A-Z\u00C0-\u01FF][\p{L}\p{M}'-]*)(\s+[A-Z\u00C0-\u01FF][\p{L}\p{M}'-]*)*$/u;
+        const $fullName = $("#fullName");
+        const $classSelect = $("#classSelect");
+        const $subjectSelect = $("#subjectSelect");
+        const $submitBtn = $("#submitBtn");
+        const $nameError = $("#nameError");
+        const $form = $("#registerForm");
+        const $tableBody = $("#registerTableBody");
+
+        // Focus vào ô Họ tên khi load
+        $fullName.trigger("focus");
+
+        const validateName = () => {
+          const name = $fullName.val().trim();
+          if (!name) {
+            $nameError.text("Vui long nhap ho ten.");
+            return false;
+          }
+          if (!nameRegex.test(name)) {
+            $nameError.text("Moi tu trong ho ten phai bat dau bang chu hoa.");
+            return false;
+          }
+          $nameError.text("");
+          return true;
+        };
+
+        const validateForm = () => {
+          const isNameValid = validateName();
+          const hasClass = $classSelect.val() !== "";
+          const hasSubject = $subjectSelect.val() !== "";
+          const isValid = isNameValid && hasClass && hasSubject;
+          $submitBtn.prop("disabled", !isValid);
+          return isValid;
+        };
+
+        $fullName.on("input blur", () => {
+          validateName();
+          validateForm();
+        });
+
+        $classSelect.on("change", validateForm);
+        $subjectSelect.on("change", validateForm);
+        $('input[name="courseType"]').on("change", validateForm);
+
+        $form.on("submit", function (event) {
+          event.preventDefault();
+          if (!validateForm()) {
+            $fullName.focus();
+            return;
+          }
+
+          const fullName = $fullName.val().trim();
+          const className = $classSelect.val();
+          const subject = $subjectSelect.val();
+          const courseType = $('input[name="courseType"]:checked').val();
+
+          const $row = $("<tr></tr>");
+          $row
+            .append($("<td></td>").text(fullName))
+            .append($("<td></td>").text(className))
+            .append($("<td></td>").text(subject))
+            .append($("<td></td>").text(courseType));
+
+          $tableBody.append($row);
+
+          $form[0].reset();
+          $submitBtn.prop("disabled", true);
+          $nameError.text("");
+          $fullName.focus();
+        });
+      });
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuan 8 - Bai 1</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 32px;
+        background: #f2f4f8;
+        color: #1d2b3a;
+      }
+
+      h1,
+      h2 {
+        margin: 0 0 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 32px;
+        color: #0d47a1;
+      }
+
+      .section {
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+        padding: 28px;
+        margin-bottom: 32px;
+      }
+
+      form {
+        display: grid;
+        gap: 16px;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+
+      label {
+        font-weight: 600;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="date"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 6px;
+        border: 1px solid #c6d3e2;
+        font-size: 14px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #1e88e5;
+        box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+      }
+
+      .error {
+        font-size: 13px;
+        color: #c62828;
+        min-height: 18px;
+      }
+
+      .success {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 6px;
+        background: #e8f5e9;
+        color: #1b5e20;
+        font-weight: 600;
+      }
+
+      button {
+        padding: 12px;
+        border-radius: 6px;
+        border: none;
+        background: #1e88e5;
+        color: #ffffff;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.1s ease;
+      }
+
+      button:hover {
+        background: #1565c0;
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      .fb-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .fb-left {
+        background: linear-gradient(135deg, #f2f5ff, #e3e8ff);
+        border-radius: 12px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #1b1f3b;
+      }
+
+      .fb-left h3 {
+        margin: 16px 0 0;
+        font-size: 22px;
+        color: #0d47a1;
+      }
+
+      .fb-left p {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #43506c;
+      }
+
+      .fb-right form {
+        gap: 14px;
+      }
+
+      .fb-form-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      @media (max-width: 900px) {
+        .fb-wrapper {
+          grid-template-columns: 1fr;
+        }
+
+        body {
+          padding: 16px;
+        }
+      }
+
+      .invalid {
+        border-color: #c62828 !important;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 12px;
+        background: #e3f2fd;
+        color: #0d47a1;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tuan 8 - Bai 1</h1>
+
+    <section class="section" id="partA">
+      <h2>Dang ky tai khoan (jQuery + Regex)</h2>
+      <form id="advancedRegisterForm" novalidate>
+        <div class="field">
+          <label for="regUsername"
+            >Ten dang nhap
+            <span class="badge">bat dau bang chu, khong co khoang trang</span></label
+          >
+          <input type="text" id="regUsername" />
+          <div class="error" data-error-for="regUsername"></div>
+        </div>
+
+        <div class="field">
+          <label for="regPassword"
+            >Mat khau
+            <span class="badge">>= 8 ky tu, co so, in hoa, ky tu dac biet</span></label
+          >
+          <input type="password" id="regPassword" />
+          <div class="error" data-error-for="regPassword"></div>
+        </div>
+
+        <div class="field">
+          <label for="regPasswordConfirm">Nhap lai mat khau</label>
+          <input type="password" id="regPasswordConfirm" />
+          <div class="error" data-error-for="regPasswordConfirm"></div>
+        </div>
+
+        <div class="field">
+          <label for="regFullName"
+            >Ho ten <span class="badge">it nhat 2 tu, moi tu viet hoa</span></label
+          >
+          <input type="text" id="regFullName" />
+          <div class="error" data-error-for="regFullName"></div>
+        </div>
+
+        <div class="field">
+          <label for="regBirthDate">Ngay sinh</label>
+          <input type="date" id="regBirthDate" />
+          <div class="error" data-error-for="regBirthDate"></div>
+        </div>
+
+        <div class="field">
+          <label for="regAddress">Dia chi</label>
+          <input type="text" id="regAddress" />
+          <div class="error" data-error-for="regAddress"></div>
+        </div>
+
+        <div class="field">
+          <label for="regPhone"
+            >Dien thoai
+            <span class="badge">10 so, bat dau 09/03/07/06/05/04</span></label
+          >
+          <input type="text" id="regPhone" />
+          <div class="error" data-error-for="regPhone"></div>
+        </div>
+
+        <div class="field">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" />
+          <div class="error" data-error-for="regEmail"></div>
+        </div>
+
+        <button type="submit">Dang ky</button>
+        <div class="success" id="regSuccess" hidden>
+          Dang ky thanh cong! Du lieu hop le.
+        </div>
+      </form>
+    </section>
+
+    <section class="section" id="partB">
+      <h2>Dang ky tai khoan Facebook</h2>
+      <div class="fb-wrapper">
+        <div class="fb-left">
+          <img
+            src="facebook-illustration.png"
+            alt="Facebook welcome illustration"
+            style="width: 100%; max-width: 220px"
+          />
+          <h3>Cam on ban da ghe tham!</h3>
+          <p>Chung toi mong som gap lai ban.</p>
+        </div>
+        <div class="fb-right">
+          <form id="facebookForm" novalidate>
+            <div class="fb-form-row">
+              <div class="field">
+                <label for="fbFirstName">Ho</label>
+                <input type="text" id="fbFirstName" />
+                <div class="error" data-error-for="fbFirstName"></div>
+              </div>
+              <div class="field">
+                <label for="fbLastName">Ten</label>
+                <input type="text" id="fbLastName" />
+                <div class="error" data-error-for="fbLastName"></div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="fbEmail">Email dang nhap</label>
+              <input type="email" id="fbEmail" />
+              <div class="error" data-error-for="fbEmail"></div>
+            </div>
+
+            <div class="field">
+              <label for="fbEmailConfirm">Nhap lai email</label>
+              <input type="email" id="fbEmailConfirm" />
+              <div class="error" data-error-for="fbEmailConfirm"></div>
+            </div>
+
+            <div class="field">
+              <label for="fbPassword">Mat khau</label>
+              <input type="password" id="fbPassword" />
+              <div class="error" data-error-for="fbPassword"></div>
+            </div>
+
+            <div class="field">
+              <label for="fbBirthYear">Nam sinh</label>
+              <input type="number" id="fbBirthYear" placeholder="Vi du: 1998" />
+              <div class="error" data-error-for="fbBirthYear"></div>
+            </div>
+
+            <button type="submit">Dang ky</button>
+            <div class="success" id="fbSuccess" hidden>
+              Ban da dang ky thanh cong!
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      $(function () {
+        const nameWordRegex =
+          /^[A-Z\u00C0-\u01FF][^\s\d]*$/;
+        const fullNameRegex =
+          /^([A-Z\u00C0-\u01FF][^\s\d]*)(\s+[A-Z\u00C0-\u01FF][^\s\d]*)+$/;
+        const usernameRegex =
+          /^[A-Za-z][A-Za-z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/;
+        const passwordRegex =
+          /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+        const phoneRegex = /^(09|03|07|06|05|04)\d{8}$/;
+        const emailRegex =
+          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        const setError = (selector, message) => {
+          const $input = $(selector);
+          $input.addClass("invalid");
+          $(`[data-error-for="${$input.attr("id")}"]`).text(message);
+        };
+
+        const clearError = (selector) => {
+          const $input = $(selector);
+          $input.removeClass("invalid");
+          $(`[data-error-for="${$input.attr("id")}"]`).text("");
+        };
+
+        $("#advancedRegisterForm input").on("input change blur", function () {
+          clearError(this);
+          $("#regSuccess").prop("hidden", true);
+        });
+
+        $("#advancedRegisterForm").on("submit", function (event) {
+          event.preventDefault();
+          let isValid = true;
+
+          const username = $("#regUsername").val().trim();
+          if (!usernameRegex.test(username)) {
+            setError(
+              "#regUsername",
+              "Ten dang nhap phai bat dau bang chu va khong co khoang trang."
+            );
+            isValid = false;
+          }
+
+          const password = $("#regPassword").val();
+          if (!passwordRegex.test(password)) {
+            setError(
+              "#regPassword",
+              "Mat khau >= 8 ky tu, gom so, chu hoa va ky tu dac biet."
+            );
+            isValid = false;
+          }
+
+          const confirmPassword = $("#regPasswordConfirm").val();
+          if (!confirmPassword || confirmPassword !== password) {
+            setError("#regPasswordConfirm", "Nhap lai mat khau chua khop.");
+            isValid = false;
+          }
+
+          const fullName = $("#regFullName").val().trim();
+          if (!fullNameRegex.test(fullName)) {
+            setError(
+              "#regFullName",
+              "Ho ten phai co it nhat 2 tu va moi tu bat dau bang chu hoa."
+            );
+            isValid = false;
+          }
+
+          const birthDateValue = $("#regBirthDate").val();
+          if (!birthDateValue) {
+            setError("#regBirthDate", "Vui long chon ngay sinh.");
+            isValid = false;
+          } else {
+            const birthDate = new Date(birthDateValue);
+            const today = new Date();
+            const age =
+              today.getFullYear() -
+              birthDate.getFullYear() -
+              (today <
+              new Date(
+                today.getFullYear(),
+                birthDate.getMonth(),
+                birthDate.getDate()
+              )
+                ? 1
+                : 0);
+            if (age <= 16) {
+              setError("#regBirthDate", "Ban phai tren 16 tuoi.");
+              isValid = false;
+            }
+          }
+
+          const address = $("#regAddress").val().trim();
+          if (!address) {
+            setError("#regAddress", "Dia chi khong duoc de trong.");
+            isValid = false;
+          }
+
+          const phone = $("#regPhone").val().trim();
+          if (!phoneRegex.test(phone)) {
+            setError(
+              "#regPhone",
+              "So dien thoai phai 10 so va bat dau bang 09, 03, 07, 06, 05 hoac 04."
+            );
+            isValid = false;
+          }
+
+          const email = $("#regEmail").val().trim();
+          if (!emailRegex.test(email)) {
+            setError("#regEmail", "Email khong dung dinh dang.");
+            isValid = false;
+          }
+
+          if (!isValid) {
+            const firstInvalid = $("#advancedRegisterForm .invalid").first();
+            if (firstInvalid.length) {
+              firstInvalid.focus();
+            }
+            return;
+          }
+
+          $("#advancedRegisterForm")[0].reset();
+          $("#advancedRegisterForm input").removeClass("invalid");
+          $("#advancedRegisterForm .error").text("");
+          $("#regSuccess").prop("hidden", false).text("Dang ky thanh cong!");
+        });
+
+        // Part B validation
+        const fbSetError = (selector, message) => {
+          const $input = $(selector);
+          $input.addClass("invalid");
+          $(`[data-error-for="${$input.attr("id")}"]`).text(message);
+        };
+
+        const fbClearError = (selector) => {
+          const $input = $(selector);
+          $input.removeClass("invalid");
+          $(`[data-error-for="${$input.attr("id")}"]`).text("");
+        };
+
+        $("#facebookForm input").on("input change blur", function () {
+          fbClearError(this);
+          $("#fbSuccess").prop("hidden", true);
+        });
+
+        $("#facebookForm").on("submit", function (event) {
+          event.preventDefault();
+          let isValid = true;
+
+          const firstName = $("#fbFirstName").val().trim();
+          if (!firstName || !nameWordRegex.test(firstName)) {
+            fbSetError("#fbFirstName", "Ho phai bat dau bang chu hoa.");
+            isValid = false;
+          }
+
+          const lastName = $("#fbLastName").val().trim();
+          if (!lastName || !nameWordRegex.test(lastName)) {
+            fbSetError("#fbLastName", "Ten phai bat dau bang chu hoa.");
+            isValid = false;
+          }
+
+          const email = $("#fbEmail").val().trim();
+          if (!email || !emailRegex.test(email)) {
+            fbSetError("#fbEmail", "Email khong dung dinh dang.");
+            isValid = false;
+          }
+
+          const emailConfirm = $("#fbEmailConfirm").val().trim();
+          if (!emailConfirm || emailConfirm !== email) {
+            fbSetError("#fbEmailConfirm", "Email nhap lai phai trung khop.");
+            isValid = false;
+          }
+
+          const password = $("#fbPassword").val();
+          if (!/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(password)) {
+            fbSetError(
+              "#fbPassword",
+              "Mat khau phai co chu, so va toi thieu 6 ky tu."
+            );
+            isValid = false;
+          }
+
+          const birthYear = Number($("#fbBirthYear").val());
+          if (!birthYear || birthYear >= 2002) {
+            fbSetError("#fbBirthYear", "Nam sinh phai nho hon 2002.");
+            isValid = false;
+          }
+
+          if (!isValid) {
+            const firstInvalid = $("#facebookForm .invalid").first();
+            if (firstInvalid.length) {
+              firstInvalid.focus();
+            }
+            return;
+          }
+
+          $("#facebookForm")[0].reset();
+          $("#facebookForm input").removeClass("invalid");
+          $("#facebookForm .error").text("");
+          $("#fbSuccess")
+            .prop("hidden", false)
+            .text("Ban da dang ky thanh cong!");
+        });
+      });
+    </script>
+  </body>
+</html>
+

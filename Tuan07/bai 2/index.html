@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>T-Speed Company</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f1f1f7;
+        color: #19334d;
+      }
+
+      .page-wrapper {
+        max-width: 960px;
+        margin: 24px auto;
+        background: #ffffff;
+        border: 1px solid #c8d0dc;
+        box-shadow: 0 12px 28px rgba(25, 51, 77, 0.08);
+      }
+
+      .banner {
+        height: 150px;
+        background: linear-gradient(90deg, #0f4c75, #3282b8 45%, #bbe1fa);
+        background-image: url("banner.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 16px;
+        color: #ffffff;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        box-shadow: inset 0 -8px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr 1fr;
+        gap: 16px;
+        padding: 20px;
+      }
+
+      .panel {
+        border: 1px solid #dbe5f0;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #f9fbff;
+      }
+
+      .panel h2 {
+        margin: 0;
+        padding: 12px 16px;
+        font-size: 16px;
+        font-weight: 700;
+        background: #c9d6ea;
+        color: #1b365d;
+        text-transform: uppercase;
+      }
+
+      .market-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .market-table th,
+      .market-table td {
+        border: 1px solid #dbe5f0;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      .market-table th {
+        background: #eef3fb;
+        font-weight: 600;
+        color: #244064;
+      }
+
+      .market-table caption {
+        caption-side: bottom;
+        padding: 8px;
+        font-size: 12px;
+        color: #6c7a89;
+      }
+
+      .form-panel {
+        padding: 16px;
+        display: grid;
+        gap: 12px;
+        background: #f6f9ff;
+      }
+
+      .form-panel label {
+        font-weight: 600;
+        font-size: 14px;
+        color: #1c2d45;
+      }
+
+      .form-panel input[type="text"],
+      .form-panel select {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #b7c4d5;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      .radio-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .radio-group label {
+        font-weight: 500;
+      }
+
+      .button-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      button {
+        flex: 1;
+        padding: 10px;
+        border-radius: 4px;
+        border: none;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        cursor: pointer;
+        background: #1b4d89;
+        color: #ffffff;
+        transition: opacity 0.2s ease, transform 0.1s ease;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+      }
+
+      button:not(:disabled):hover {
+        opacity: 0.85;
+      }
+
+      button:not(:disabled):active {
+        transform: translateY(1px);
+      }
+
+      .quote-panel {
+        padding: 18px 16px 20px;
+        background: #fdfdfb;
+        display: grid;
+        gap: 12px;
+      }
+
+      .quote-panel ul {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 14px;
+        color: #1b365d;
+      }
+
+      .quote-panel img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid #c8d0dc;
+      }
+
+      .quote-price {
+        font-weight: 700;
+        font-size: 18px;
+        color: #0c6a31;
+      }
+
+      .state-message {
+        font-size: 13px;
+        color: #0f4c75;
+        min-height: 18px;
+      }
+
+      @media (max-width: 900px) {
+        .content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="banner">T-Speed Company</div>
+      <div class="content">
+        <section class="panel">
+          <h2>Bảng tin thị trường</h2>
+          <table class="market-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Mua vào</th>
+                <th>Bán ra</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Vàng</th>
+                <td id="goldBuy">--</td>
+                <td id="goldSell">--</td>
+              </tr>
+              <tr>
+                <th scope="row">USD</th>
+                <td id="usdBuy">--</td>
+                <td id="usdSell">--</td>
+              </tr>
+            </tbody>
+            <caption>
+              Giá sẽ cập nhật sau khi bấm Update.
+            </caption>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h2>Cập nhật giá cả thị trường</h2>
+          <div class="form-panel">
+            <label for="buyPrice">Mua vào</label>
+            <input
+              id="buyPrice"
+              type="text"
+              placeholder="Nhập giá mua vào"
+              autocomplete="off"
+            />
+
+            <label for="sellPrice">Bán ra</label>
+            <input
+              id="sellPrice"
+              type="text"
+              placeholder="Nhập giá bán ra"
+              autocomplete="off"
+            />
+
+            <label for="carType">Loại xe</label>
+            <select id="carType">
+              <option value="">-- Chọn loại xe --</option>
+              <option value="../images/car1.jpg;35000">Toyota</option>
+              <option value="../images/car2.jpg;15000">KIA</option>
+              <option value="../images/car3.jpg;40000">Ford</option>
+              <option value="../images/car4.jpg;32000">Civic</option>
+              <option value="../images/car5.jpg;50000">Ferrari</option>
+              <option value="../images/car7.jpg;45000">Mercedes</option>
+            </select>
+
+            <div>
+              <span style="display: block; font-weight: 600; margin-bottom: 6px"
+                >Cập nhật cho:</span
+              >
+              <div class="radio-group">
+                <label>
+                  <input type="radio" name="currency" value="gold" /> Vàng
+                </label>
+                <label>
+                  <input type="radio" name="currency" value="usd" /> USD
+                </label>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button id="updateBtn" type="button">Update</button>
+              <button id="stateBtn" type="button" disabled>State</button>
+            </div>
+
+            <div id="stateMessage" class="state-message"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Bảng báo giá</h2>
+          <div class="quote-panel">
+            <ul>
+              <li>Kiểu dáng thể thao, sang trọng</li>
+              <li>Nổi bật, ít tốn nhiên liệu</li>
+              <li>Phù hợp đường trường</li>
+            </ul>
+            <img
+              id="carPreview"
+              src="../images/car1.jpg"
+              alt="Ảnh minh họa"
+            />
+            <div id="carPriceDisplay" class="quote-price">Giá: -- USD</div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const buyInput = document.getElementById("buyPrice");
+      const sellInput = document.getElementById("sellPrice");
+      const carSelect = document.getElementById("carType");
+      const updateBtn = document.getElementById("updateBtn");
+      const stateBtn = document.getElementById("stateBtn");
+      const stateMessage = document.getElementById("stateMessage");
+      const carPreview = document.getElementById("carPreview");
+      const carPriceDisplay = document.getElementById("carPriceDisplay");
+      const goldBuy = document.getElementById("goldBuy");
+      const goldSell = document.getElementById("goldSell");
+      const usdBuy = document.getElementById("usdBuy");
+      const usdSell = document.getElementById("usdSell");
+
+      // Focus vào trường Mua vào khi trang tải và khóa nút State
+      window.addEventListener("DOMContentLoaded", () => {
+        buyInput.focus();
+        stateBtn.disabled = true;
+      });
+
+      // Kiểm tra giá trị Mua vào để bật tắt nút State
+      buyInput.addEventListener("blur", () => {
+        const value = buyInput.value.trim();
+        const isNumber = value !== "" && !Number.isNaN(Number(value));
+        stateBtn.disabled = !isNumber;
+        if (!isNumber) {
+          stateMessage.textContent =
+            "Nhập số hợp lệ vào ô Mua vào để bật nút State.";
+        } else {
+          stateMessage.textContent = "";
+        }
+      });
+
+      // Nút State hiển thị đối tượng đang cập nhật
+      stateBtn.addEventListener("click", () => {
+        const currency = document.querySelector(
+          'input[name="currency"]:checked'
+        );
+        if (!currency) {
+          stateMessage.textContent = "Vui lòng chọn Vàng hoặc USD.";
+          return;
+        }
+        stateMessage.textContent =
+          currency.value === "gold"
+            ? "Đang cập nhật bảng giá cho mục Vàng."
+            : "Đang cập nhật bảng giá cho mục USD.";
+      });
+
+      // Chọn loại xe sẽ cập nhật hình và giá
+      carSelect.addEventListener("change", () => {
+        const value = carSelect.value;
+        if (!value) {
+          carPreview.src = "../images/car1.jpg";
+          carPriceDisplay.textContent = "Giá: -- USD";
+          return;
+        }
+        const [imgPath, price] = value.split(";");
+        carPreview.src = imgPath;
+        const formattedPrice = Number(price).toLocaleString("en-US");
+        carPriceDisplay.textContent = `Giá: ${formattedPrice} USD`;
+      });
+
+      // Nút Update cập nhật bảng tin thị trường
+      updateBtn.addEventListener("click", () => {
+        const buyValue = buyInput.value.trim();
+        const sellValue = sellInput.value.trim();
+        const currency = document.querySelector(
+          'input[name="currency"]:checked'
+        );
+
+        if (!currency) {
+          stateMessage.textContent = "Vui lòng chọn Vàng hoặc USD trước khi cập nhật.";
+          return;
+        }
+
+        if (buyValue === "" || sellValue === "") {
+          stateMessage.textContent = "Nhập đầy đủ giá Mua vào và Bán ra.";
+          return;
+        }
+
+        if (Number.isNaN(Number(buyValue)) || Number.isNaN(Number(sellValue))) {
+          stateMessage.textContent = "Giá phải là số hợp lệ.";
+          return;
+        }
+
+        const formattedBuy = Number(buyValue).toLocaleString("en-US");
+        const formattedSell = Number(sellValue).toLocaleString("en-US");
+
+        if (currency.value === "gold") {
+          goldBuy.textContent = formattedBuy;
+          goldSell.textContent = formattedSell;
+        } else {
+          usdBuy.textContent = formattedBuy;
+          usdSell.textContent = formattedSell;
+        }
+
+        stateMessage.textContent =
+          "Đã cập nhật bảng giá cho " +
+          (currency.value === "gold" ? "Vàng." : "USD.");
+      });
+    </script>
+  </body>
+</html>
+
